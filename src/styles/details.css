@@ -94,10 +94,6 @@ html[data-theme='dark'] {
 .repository-links a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--accent); font-size: .9rem; }
 .repository-links a:first-child { padding-top: 0; }
 .repository-links a span:last-child { font-size: 1.15rem; }
-.next-project { display: flex; align-items: center; justify-content: space-between; padding: 30px 0 44px; border-top: 1px solid var(--line); }
-.next-project div > span { color: var(--muted); font-family: var(--mono); font-size: .67rem; }
-.next-project h2 { margin-top: 10px; }
-.next-project > span { color: var(--accent); font-size: 2.2rem; }
 
 @media (max-width: 800px) {
   .detail-wrap { width: calc(100% - 48px); padding-top: 26px; }
