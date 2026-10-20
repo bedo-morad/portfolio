@@ -45,7 +45,7 @@ export const projects = [
     ],
     architecture: 'The Angular client connects to the Spring Boot backend using STOMP over WebSockets for real-time messaging. Keycloak handles authentication and PostgreSQL stores application data.',
     repos: [{ label: 'SwiftChat repository', url: 'https://github.com/bedo-morad/SwiftChat' }],
-    screenshot: '/images/swiftchat-realtime-chat.png', screenshotAlt: 'SwiftChat interface showing a conversation in the real-time chat workspace.', screenshotSource: 'https://github.com/bedo-morad/SwiftChat/blob/master/docs/screenshots/realtime-chat.png'
+    screenshot: '/images/swiftchat-workspace.png', screenshotAlt: 'SwiftChat workspace with a conversation list and welcome screen.', screenshotSource: 'https://github.com/bedo-morad/SwiftChat/blob/master/docs/screenshots/workspace.png'
   },
   {
     slug: 'masa2o-ta7ady', name: 'Masa2o-Ta7ady', category: 'Football game night',
