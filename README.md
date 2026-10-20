@@ -83,3 +83,7 @@ npm run preview
 - `src/layouts/Layout.astro`: shared layout, navigation, and theme behavior.
 - `src/styles/`: site and project page styles.
 - `public/`: static assets, including the CV and project screenshots.
+
+## Source formatting
+
+Run `npm run format` to format source files with Prettier and its Astro plugin, or `npm run format:check` to check without writing changes. Shared theme tokens live in `src/styles/global.css`; project-detail styles consume those same tokens.
