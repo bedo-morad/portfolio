@@ -1,0 +1,17 @@
+{
+  "name": "abdelrahman-mosad-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.0",
+    "@fontsource/ibm-plex-sans": "^5.2.0",
+    "@fontsource/space-grotesk": "^5.2.10",
+    "astro": "^5.16.0"
+  }
+}

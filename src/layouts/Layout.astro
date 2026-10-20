@@ -1,0 +1,58 @@
+---
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+const { title = 'Abdelrahman Mosad | Java Backend Developer', description = 'Java and Spring Boot backend applications, with Angular web interfaces and Flutter mobile apps. Selected projects by Abdelrahman Mosad.', home = false } = Astro.props;
+const navigation = [['Home','home'],['About','about'],['Experience','experience'],['Education','education'],['Projects','projects'],['Contact','contact']];
+---
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#20232e" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('am-theme')||'dark'}catch{document.documentElement.dataset.theme='dark'}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav-capsule" aria-label="Main navigation">
+        <a href={home ? '#home' : '/'} class="mobile-brand" aria-label="Abdelrahman Mosad, home">A.M</a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation-links">Menu <span aria-hidden="true">+</span></button>
+        <div class="nav-links" id="navigation-links">
+          {navigation.map(([label,id]) => <a href={home ? `#${id}` : `/#${id}`} data-section={id} class:list={{active:home && id==='home'}} aria-current={home && id==='home' ? 'location' : undefined}>{label}</a>)}
+        </div>
+        <button class="theme-toggle" aria-label="Switch to light theme" aria-pressed="true"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.1A8.6 8.6 0 0 1 10.9 3.5a8.6 8.6 0 1 0 9.6 9.6Z"/><path d="M18 3v4m-2-2h4"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer wrap"><a href="/" class="footer-name">Abdelrahman Mosad<span>Java Backend Developer</span></a><a href="https://github.com/bedo-morad" target="_blank" rel="noopener noreferrer">GitHub</a><a href={home ? '#home' : '/'} class="back-top">Back to top <span aria-hidden="true">↑</span></a></footer>
+    <script>
+      const root=document.documentElement;
+      const themeButton=document.querySelector<HTMLButtonElement>('.theme-toggle');
+      function syncTheme(){const dark=root.dataset.theme==='dark';themeButton?.setAttribute('aria-pressed',String(dark));themeButton?.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');document.querySelector('meta[name="theme-color"]')?.setAttribute('content',dark?'#20232e':'#e3e4eb')}
+      syncTheme();
+      themeButton?.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('am-theme',root.dataset.theme)}catch{}syncTheme()});
+      const menu=document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav=document.querySelector('.nav-capsule');
+      function closeMenu(){nav?.classList.remove('menu-open');menu?.setAttribute('aria-expanded','false')}
+      menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav?.classList.toggle('menu-open',open)});
+      document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',closeMenu));
+      document.addEventListener('keydown',event=>{if(event.key==='Escape'){const wasOpen=menu?.getAttribute('aria-expanded')==='true';closeMenu();if(wasOpen)menu?.focus()}});
+      const sectionLinks=[...document.querySelectorAll<HTMLAnchorElement>('[data-section]')];
+      const sections=sectionLinks.map(link=>document.getElementById(link.dataset.section!)).filter(Boolean) as HTMLElement[];
+      let ticking=false;
+      function updateActive(){let id='home';for(const section of sections){if(section.getBoundingClientRect().top<=180)id=section.id}for(const link of sectionLinks){const active=link.dataset.section===id;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')}ticking=false}
+      if(sections.length){window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(updateActive);ticking=true}},{passive:true});updateActive()}
+    </script>
+  </body>
+</html>
