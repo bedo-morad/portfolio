@@ -162,3 +162,9 @@ html[data-theme='dark'] {
 html[data-theme='dark'] .arch-node.accent-node,html[data-theme='dark'] .arch-node.accent-node small,html[data-theme='dark'] .mobile-flow-api,html[data-theme='dark'] .mobile-flow-api span,html[data-theme='dark'] .mobile-flow-api small{color:#252235}
 @media(max-width:800px){.detail-wrap{padding-top:109px}.project-header{padding-top:42px}}
 @media(max-width:390px){.detail-wrap{padding-top:105px}.project-header{padding-top:35px}.flow-header{font-size:12px}.mono{font-size:8px}}
+
+/* Keep muted labels readable on dark diagram nodes. */
+html[data-theme='dark'] .arch-node:not(.accent-node),
+html[data-theme='dark'] .mobile-flow-node:not(.mobile-flow-api) {
+  background: var(--surface);
+}

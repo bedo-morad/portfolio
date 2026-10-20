@@ -20,7 +20,14 @@ const navigation = [['Home','home'],['About','about'],['Experience','experience'
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('am-theme')||'dark'}catch{document.documentElement.dataset.theme='dark'}</script>
+    <script is:inline>
+      try {
+        const savedTheme = localStorage.getItem('am-theme');
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -34,7 +41,7 @@ const navigation = [['Home','home'],['About','about'],['Experience','experience'
         <button class="theme-toggle" aria-label="Switch to light theme" aria-pressed="true"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.1A8.6 8.6 0 0 1 10.9 3.5a8.6 8.6 0 1 0 9.6 9.6Z"/><path d="M18 3v4m-2-2h4"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
       </nav>
     </header>
-    <main id="main"><slot /></main>
+    <main id="main" tabindex="-1"><slot /></main>
     <footer class="site-footer wrap"><a href="/" class="footer-name">Abdelrahman Mosad<span>Java Backend Developer</span></a><a href="https://github.com/bedo-morad" target="_blank" rel="noopener noreferrer">GitHub</a><a href={home ? '#home' : '/'} class="back-top">Back to top <span aria-hidden="true">↑</span></a></footer>
     <script>
       const root=document.documentElement;
@@ -46,13 +53,51 @@ const navigation = [['Home','home'],['About','about'],['Experience','experience'
       const nav=document.querySelector('.nav-capsule');
       function closeMenu(){nav?.classList.remove('menu-open');menu?.setAttribute('aria-expanded','false')}
       menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav?.classList.toggle('menu-open',open)});
-      document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',closeMenu));
+      document.querySelectorAll<HTMLAnchorElement>('.nav-links a').forEach(link => {
+        link.addEventListener('click', event => {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          const wasOpen = menu?.getAttribute('aria-expanded') === 'true';
+          closeMenu();
+          // Move keyboard focus out of the now-hidden menu into the selected section.
+          if (wasOpen && link.pathname === window.location.pathname) {
+            const target = document.getElementById(link.hash.slice(1));
+            if (target) {
+              if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+              target.focus({ preventScroll: true });
+            }
+          }
+        });
+      });
       document.addEventListener('keydown',event=>{if(event.key==='Escape'){const wasOpen=menu?.getAttribute('aria-expanded')==='true';closeMenu();if(wasOpen)menu?.focus()}});
       const sectionLinks=[...document.querySelectorAll<HTMLAnchorElement>('[data-section]')];
       const sections=sectionLinks.map(link=>document.getElementById(link.dataset.section!)).filter(Boolean) as HTMLElement[];
-      let ticking=false;
-      function updateActive(){let id='home';for(const section of sections){if(section.getBoundingClientRect().top<=180)id=section.id}for(const link of sectionLinks){const active=link.dataset.section===id;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')}ticking=false}
-      if(sections.length){window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(updateActive);ticking=true}},{passive:true});updateActive()}
+      let ticking = false;
+      function updateActive() {
+        let id = 'home';
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= 180) id = section.id;
+        }
+        const pageHeight = document.documentElement.scrollHeight;
+        const atBottom = window.scrollY > 0 && window.scrollY + window.innerHeight >= pageHeight - 2;
+        if (atBottom && sections.length) id = sections[sections.length - 1].id;
+        for (const link of sectionLinks) {
+          const active = link.dataset.section === id;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        }
+        ticking = false;
+      }
+      function scheduleActiveUpdate() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateActive);
+      }
+      if (sections.length) {
+        window.addEventListener('scroll', scheduleActiveUpdate, { passive: true });
+        window.addEventListener('resize', scheduleActiveUpdate);
+        updateActive();
+      }
     </script>
   </body>
 </html>

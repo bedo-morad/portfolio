@@ -68,7 +68,7 @@ export const projects = [
     summary: 'A team-built smart door-lock graduation project, with a focus on the Raspberry Pi side.',
     tech: ['Python', 'Raspberry Pi', 'Keypad', 'Sensors', 'Camera', 'Firebase'],
     role: 'Team graduation project', scope: 'Raspberry Pi side only', status: 'Related repositories grouped below. No public demo.',
-    intro: 'A smart door-lock graduation project developed by a team. Abdelrahman’s contribution covers the Raspberry Pi side, using Python with a keypad, sensors, a camera, and Firebase. The companion Flutter app is part of the team project, not his individual contribution.',
+    intro: 'A smart door-lock graduation project developed by a team. The Raspberry Pi contribution uses Python with a keypad, sensors, a camera, and Firebase. The companion Flutter app belongs to the wider team project and falls outside this contribution.',
     features: [
       ['Raspberry Pi software', 'Python code for the device side of the smart door lock.'],
       ['Hardware integration', 'Work with the keypad, sensors, and camera connected to the Raspberry Pi.'],

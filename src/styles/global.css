@@ -9,3 +9,17 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.type-cursor{display:none}}
 
 .about-description{max-width:72ch;margin-top:30px}.about-description>p+p{margin-top:18px}
+
+/* The rotated decorative orbit must not create horizontal page scrolling. */
+html, body { overflow-x: clip; }
+
+/* Keep the name inside its grid column beside the identity illustration. */
+@media (max-width: 1050px) {
+  .hero h1 { white-space: normal; }
+}
+
+/* Card edges clip outward outlines, so draw the keyboard focus ring inside. */
+.project-card-link:focus-visible {
+  outline-offset: -5px;
+  border-radius: 22px;
+}
