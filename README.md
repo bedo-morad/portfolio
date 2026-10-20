@@ -56,6 +56,19 @@ npm run build
 
 `npm run check` runs Astro's diagnostics. `npm run build` generates the static site in `dist/`.
 
+## Browser regression tests
+
+```sh
+npm ci
+npx playwright install --with-deps chromium
+npm run build
+npm test
+```
+
+Playwright starts the production preview automatically. Tests exercise all six routes, navigation and section anchors, theme persistence, gallery controls, and clipboard success and failure through the public UI on desktop and mobile Chromium. Clipboard-denial cases simulate browser API failures; application internals are not mocked. Run `npm run test:ui` to debug interactively.
+
+GitHub Actions runs a clean install, diagnostics, a production build, and the browser suite. Failed runs retain the HTML report and traces for seven days. These are regression tests for existing behavior, not a replacement for cross-browser or visual review.
+
 To preview the production build locally:
 
 ```sh
@@ -71,3 +84,7 @@ npm run preview
 - `src/layouts/Layout.astro`: shared layout, navigation, and theme behavior.
 - `src/styles/`: site and project page styles.
 - `public/`: static assets, including the CV and project screenshots.
+
+## Source formatting
+
+Run `npm run format` to format source files with Prettier and its Astro plugin, or `npm run format:check` to check without writing changes. Shared theme tokens live in `src/styles/global.css`; project-detail styles consume those same tokens.

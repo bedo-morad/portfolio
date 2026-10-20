@@ -5,9 +5,21 @@ import '@fontsource/space-grotesk/600.css';
 import '@fontsource/space-grotesk/700.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
-const { title = 'Abdelrahman Mosad | Java Backend Developer', description = 'Java and Spring Boot backend applications, with Angular web interfaces and Flutter mobile apps. Selected projects by Abdelrahman Mosad.', home = false } = Astro.props;
-const navigation = [['Home','home'],['About','about'],['Experience','experience'],['Education','education'],['Projects','projects'],['Contact','contact']];
+const {
+  title = 'Abdelrahman Mosad | Java Backend Developer',
+  description = 'Java and Spring Boot backend applications, with Angular web interfaces and Flutter mobile apps. Selected projects by Abdelrahman Mosad.',
+  home = false,
+} = Astro.props;
+const navigation = [
+  ['Home', 'home'],
+  ['About', 'about'],
+  ['Experience', 'experience'],
+  ['Education', 'education'],
+  ['Projects', 'projects'],
+  ['Contact', 'contact'],
+];
 ---
+
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
@@ -23,54 +35,150 @@ const navigation = [['Home','home'],['About','about'],['Experience','experience'
     <script is:inline>
       try {
         const savedTheme = localStorage.getItem('am-theme');
-        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+        document.documentElement.dataset.theme =
+          savedTheme === 'light' ? 'light' : 'dark';
       } catch {
         document.documentElement.dataset.theme = 'dark';
       }
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
     <header class="site-header">
       <nav class="nav-capsule" aria-label="Main navigation">
-        <a href={home ? '#home' : '/'} class="mobile-brand" aria-label="Abdelrahman Mosad, home">A.M</a>
-        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation-links">Menu <span aria-hidden="true">+</span></button>
+        <a
+          href={home ? '#home' : '/'}
+          class="mobile-brand"
+          aria-label="Abdelrahman Mosad, home"
+        >
+          A.M
+        </a>
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="navigation-links"
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
         <div class="nav-links" id="navigation-links">
-          {navigation.map(([label,id]) => <a href={home ? `#${id}` : `/#${id}`} data-section={id} class:list={{active:home && id==='home'}} aria-current={home && id==='home' ? 'location' : undefined}>{label}</a>)}
+          {navigation.map(([label, id]) => (
+            <a
+              href={home ? `#${id}` : `/#${id}`}
+              data-section={id}
+              class:list={{ active: home && id === 'home' }}
+              aria-current={home && id === 'home' ? 'location' : undefined}
+            >
+              {label}
+            </a>
+          ))}
         </div>
-        <button class="theme-toggle" aria-label="Switch to light theme" aria-pressed="true"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.1A8.6 8.6 0 0 1 10.9 3.5a8.6 8.6 0 1 0 9.6 9.6Z"/><path d="M18 3v4m-2-2h4"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+        <button
+          class="theme-toggle"
+          aria-label="Switch to light theme"
+          aria-pressed="true"
+        >
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.5 13.1A8.6 8.6 0 0 1 10.9 3.5a8.6 8.6 0 1 0 9.6 9.6Z" />
+            <path d="M18 3v4m-2-2h4" />
+          </svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" />
+          </svg>
+        </button>
       </nav>
     </header>
-    <main id="main" tabindex="-1"><slot /></main>
-    <footer class="site-footer wrap"><a href="/" class="footer-name">Abdelrahman Mosad<span>Java Backend Developer</span></a><a href="https://github.com/bedo-morad" target="_blank" rel="noopener noreferrer">GitHub</a><a href={home ? '#home' : '/'} class="back-top">Back to top <span aria-hidden="true">↑</span></a></footer>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer wrap">
+      <a href="/" class="footer-name">
+        Abdelrahman Mosad<span>Java Backend Developer</span>
+      </a>
+      <a
+        href="https://github.com/bedo-morad"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+      <a href={home ? '#home' : '/'} class="back-top">
+        Back to top <span aria-hidden="true">↑</span>
+      </a>
+    </footer>
     <script>
-      const root=document.documentElement;
-      const themeButton=document.querySelector<HTMLButtonElement>('.theme-toggle');
-      function syncTheme(){const dark=root.dataset.theme==='dark';themeButton?.setAttribute('aria-pressed',String(dark));themeButton?.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');document.querySelector('meta[name="theme-color"]')?.setAttribute('content',dark?'#20232e':'#e3e4eb')}
+      const root = document.documentElement;
+      const themeButton =
+        document.querySelector<HTMLButtonElement>('.theme-toggle');
+      function syncTheme() {
+        const dark = root.dataset.theme === 'dark';
+        themeButton?.setAttribute('aria-pressed', String(dark));
+        themeButton?.setAttribute(
+          'aria-label',
+          dark ? 'Switch to light theme' : 'Switch to dark theme',
+        );
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', dark ? '#20232e' : '#e3e4eb');
+      }
       syncTheme();
-      themeButton?.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('am-theme',root.dataset.theme)}catch{}syncTheme()});
-      const menu=document.querySelector<HTMLButtonElement>('.menu-toggle');
-      const nav=document.querySelector('.nav-capsule');
-      function closeMenu(){nav?.classList.remove('menu-open');menu?.setAttribute('aria-expanded','false')}
-      menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav?.classList.toggle('menu-open',open)});
-      document.querySelectorAll<HTMLAnchorElement>('.nav-links a').forEach(link => {
-        link.addEventListener('click', event => {
-          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      themeButton?.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        try {
+          localStorage.setItem('am-theme', root.dataset.theme);
+        } catch {}
+        syncTheme();
+      });
+      const menu = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector('.nav-capsule');
+      function closeMenu() {
+        nav?.classList.remove('menu-open');
+        menu?.setAttribute('aria-expanded', 'false');
+      }
+      menu?.addEventListener('click', () => {
+        const open = menu.getAttribute('aria-expanded') !== 'true';
+        menu.setAttribute('aria-expanded', String(open));
+        nav?.classList.toggle('menu-open', open);
+      });
+      document
+        .querySelectorAll<HTMLAnchorElement>('.nav-links a')
+        .forEach((link) => {
+          link.addEventListener('click', (event) => {
+            if (
+              event.ctrlKey ||
+              event.metaKey ||
+              event.shiftKey ||
+              event.altKey
+            )
+              return;
+            const wasOpen = menu?.getAttribute('aria-expanded') === 'true';
+            closeMenu();
+            // Move keyboard focus out of the now-hidden menu into the selected section.
+            if (wasOpen && link.pathname === window.location.pathname) {
+              const target = document.getElementById(link.hash.slice(1));
+              if (target) {
+                if (!target.hasAttribute('tabindex'))
+                  target.setAttribute('tabindex', '-1');
+                target.focus({ preventScroll: true });
+              }
+            }
+          });
+        });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
           const wasOpen = menu?.getAttribute('aria-expanded') === 'true';
           closeMenu();
-          // Move keyboard focus out of the now-hidden menu into the selected section.
-          if (wasOpen && link.pathname === window.location.pathname) {
-            const target = document.getElementById(link.hash.slice(1));
-            if (target) {
-              if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
-              target.focus({ preventScroll: true });
-            }
-          }
-        });
+          if (wasOpen) menu?.focus();
+        }
       });
-      document.addEventListener('keydown',event=>{if(event.key==='Escape'){const wasOpen=menu?.getAttribute('aria-expanded')==='true';closeMenu();if(wasOpen)menu?.focus()}});
-      const sectionLinks=[...document.querySelectorAll<HTMLAnchorElement>('[data-section]')];
-      const sections=sectionLinks.map(link=>document.getElementById(link.dataset.section!)).filter(Boolean) as HTMLElement[];
+      const sectionLinks = [
+        ...document.querySelectorAll<HTMLAnchorElement>('[data-section]'),
+      ];
+      const sections = sectionLinks
+        .map((link) => document.getElementById(link.dataset.section!))
+        .filter(Boolean) as HTMLElement[];
       let ticking = false;
       function updateActive() {
         let id = 'home';
@@ -78,7 +186,9 @@ const navigation = [['Home','home'],['About','about'],['Experience','experience'
           if (section.getBoundingClientRect().top <= 180) id = section.id;
         }
         const pageHeight = document.documentElement.scrollHeight;
-        const atBottom = window.scrollY > 0 && window.scrollY + window.innerHeight >= pageHeight - 2;
+        const atBottom =
+          window.scrollY > 0 &&
+          window.scrollY + window.innerHeight >= pageHeight - 2;
         if (atBottom && sections.length) id = sections[sections.length - 1].id;
         for (const link of sectionLinks) {
           const active = link.dataset.section === id;
@@ -94,7 +204,9 @@ const navigation = [['Home','home'],['About','about'],['Experience','experience'
         requestAnimationFrame(updateActive);
       }
       if (sections.length) {
-        window.addEventListener('scroll', scheduleActiveUpdate, { passive: true });
+        window.addEventListener('scroll', scheduleActiveUpdate, {
+          passive: true,
+        });
         window.addEventListener('resize', scheduleActiveUpdate);
         updateActive();
       }

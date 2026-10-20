@@ -19,23 +19,39 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 ---
 
-<Layout title={`${project.name} | Abdelrahman Mosad`} description={project.summary}>
+<Layout
+  title={`${project.name} | Abdelrahman Mosad`}
+  description={project.summary}
+>
   <div class="wrap detail-wrap">
-    <a class="back-link" href="/#projects"><span aria-hidden="true">←</span> All projects</a>
+    <a class="back-link" href="/#projects">
+      <span aria-hidden="true">←</span> All projects
+    </a>
 
     <header class="project-header">
       <p class="project-category">{project.category}</p>
       <h1>{project.name}</h1>
       <p class="project-deck">{project.summary}</p>
       <ul class="tech-list" aria-label="Technologies used">
-        {project.tech.map((technology) => <li>{technology}</li>)}
+        {project.tech.map((technology) => (
+          <li>{technology}</li>
+        ))}
       </ul>
     </header>
 
     <dl class="project-meta">
-      <div><dt>Project</dt><dd>{project.role}</dd></div>
-      <div><dt>Contribution</dt><dd>{project.scope}</dd></div>
-      <div><dt>Availability</dt><dd>{project.status}</dd></div>
+      <div>
+        <dt>Project</dt>
+        <dd>{project.role}</dd>
+      </div>
+      <div>
+        <dt>Contribution</dt>
+        <dd>{project.scope}</dd>
+      </div>
+      <div>
+        <dt>Availability</dt>
+        <dd>{project.status}</dd>
+      </div>
     </dl>
 
     <section class="detail-overview" aria-labelledby="overview-title">
@@ -67,11 +83,21 @@ const { project } = Astro.props;
       <section class="screenshot-section" aria-labelledby="interface-title">
         <div class="section-heading">
           <h2 id="interface-title">Interface</h2>
-          <a class="text-link" href={project.screenshot.source} target="_blank" rel="noopener noreferrer">
+          <a
+            class="text-link"
+            href={project.screenshot.source}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Repository source <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <figure class:list={['project-screenshot', { portrait: project.slug === 'masa2o-ta7ady' }]}>
+        <figure
+          class:list={[
+            'project-screenshot',
+            { portrait: project.slug === 'masa2o-ta7ady' },
+          ]}
+        >
           <img
             src={project.screenshot.src}
             alt={project.screenshot.alt}
@@ -79,7 +105,9 @@ const { project } = Astro.props;
             width={project.slug === 'masa2o-ta7ady' ? 572 : 1440}
             height={project.slug === 'masa2o-ta7ady' ? 835 : 900}
           />
-          <figcaption>Screenshot from the public {project.name} repository.</figcaption>
+          <figcaption>
+            Screenshot from the public {project.name} repository.
+          </figcaption>
         </figure>
       </section>
     )}
@@ -89,7 +117,8 @@ const { project } = Astro.props;
       <div class="repository-links">
         {project.repos.map((repo) => (
           <a href={repo.url} target="_blank" rel="noopener noreferrer">
-            <span>{repo.label}</span><span aria-hidden="true">↗</span>
+            <span>{repo.label}</span>
+            <span aria-hidden="true">↗</span>
           </a>
         ))}
       </div>

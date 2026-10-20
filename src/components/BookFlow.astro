@@ -5,33 +5,171 @@ interface Props {
 
 const { compact = false } = Astro.props;
 ---
+
 <div class:list={['book-flow', { compact }]}>
-  <div class="flow-header"><span>BookVerse</span><span class="mono">application flow</span></div>
-  <svg class="flow-svg" viewBox="0 0 600 390" role="img" aria-label="BookVerse architecture: Angular web interface connects to the Spring Boot API, which stores data in PostgreSQL. Spring Security and JWT secure the API.">
-    <defs>
-      <pattern id={compact ? 'grid-small' : 'grid-large'} width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="#ced9e7"/></pattern>
-      <marker id={compact ? 'arrow-small' : 'arrow-large'} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 7 3.5 0 7" fill="none" stroke="#2457db" stroke-width="1.2"/></marker>
-    </defs>
-    <rect width="600" height="390" fill={`url(#${compact ? 'grid-small' : 'grid-large'})`}/>
-    <path d="M126 113V151H194" class="flow-line" marker-end={`url(#${compact ? 'arrow-small' : 'arrow-large'})`}/>
-    <path d="M409 214H474V274" class="flow-line" marker-end={`url(#${compact ? 'arrow-small' : 'arrow-large'})`}/>
-    <rect x="30" y="32" width="192" height="81" rx="8" fill="white" stroke="#c4d1e1"/>
-    <path d="m55 57 14-5 14 5-3 23-11 6-11-6Z" fill="none" stroke="#2457db" stroke-width="1.7"/><path d="m62 76 7-16 7 16m-11-5h8" fill="none" stroke="#2457db" stroke-width="1.7"/>
-    <text x="98" y="67" class="diagram-title">Angular</text><text x="98" y="88" class="diagram-small">Web interface</text>
-    <rect x="194" y="137" width="215" height="112" rx="9" fill="#2457db"/>
-    <rect x="214" y="157" width="28" height="24" rx="4" stroke="white" fill="none" stroke-width="1.6"/><path d="M220 165h16m-16 7h10" stroke="white" stroke-width="1.6"/>
-    <text x="256" y="175" class="diagram-title inverse">Spring Boot</text><text x="215" y="204" class="diagram-small inverse">REST API</text><path d="M214 219h175" stroke="#8daaf3"/><text x="215" y="238" class="diagram-code inverse">Spring Security + JWT</text>
-    <rect x="378" y="275" width="192" height="81" rx="8" fill="white" stroke="#c4d1e1"/>
-    <ellipse cx="410" cy="299" rx="12" ry="5" stroke="#2457db" fill="none" stroke-width="1.6"/><path d="M398 299v23c0 7 24 7 24 0v-23m-24 12c0 7 24 7 24 0" stroke="#2457db" fill="none" stroke-width="1.6"/>
-    <text x="438" y="309" class="diagram-title">PostgreSQL</text><text x="438" y="330" class="diagram-small">Data storage</text>
-    <text x="34" y="339" class="diagram-code">share / borrow / return</text>
-  </svg>
-  <div class="mobile-flow" role="img" aria-label="Angular web interface connects to the Spring Boot REST API, secured with Spring Security and JWT, then PostgreSQL data storage.">
-    <div class="mobile-flow-node"><strong>Angular</strong><span>Web interface</span></div>
-    <span class="mobile-flow-arrow" aria-hidden="true">↓</span>
-    <div class="mobile-flow-node mobile-flow-api"><strong>Spring Boot</strong><span>REST API</span><small>Spring Security + JWT</small></div>
-    <span class="mobile-flow-arrow" aria-hidden="true">↓</span>
-    <div class="mobile-flow-node"><strong>PostgreSQL</strong><span>Data storage</span></div>
+  <div class="flow-header">
+    <span>BookVerse</span>
+    <span class="mono">application flow</span>
   </div>
-  <div class="flow-footer"><span class="flow-dot" aria-hidden="true"></span><span>From the BookVerse project</span><a href="/projects/bookverse/">Project details <span aria-hidden="true">↗</span></a></div>
+  <svg
+    class="flow-svg"
+    viewBox="0 0 600 390"
+    role="img"
+    aria-label="BookVerse architecture: Angular web interface connects to the Spring Boot API, which stores data in PostgreSQL. Spring Security and JWT secure the API."
+  >
+    <defs>
+      <pattern
+        id={compact ? 'grid-small' : 'grid-large'}
+        width="24"
+        height="24"
+        patternUnits="userSpaceOnUse"
+      >
+        <circle cx="1" cy="1" r="0.8" fill="#ced9e7" />
+      </pattern>
+      <marker
+        id={compact ? 'arrow-small' : 'arrow-large'}
+        markerWidth="7"
+        markerHeight="7"
+        refX="6"
+        refY="3.5"
+        orient="auto"
+      >
+        <path
+          d="M0 0 7 3.5 0 7"
+          fill="none"
+          stroke="#2457db"
+          stroke-width="1.2"
+        />
+      </marker>
+    </defs>
+    <rect
+      width="600"
+      height="390"
+      fill={`url(#${compact ? 'grid-small' : 'grid-large'})`}
+    />
+    <path
+      d="M126 113V151H194"
+      class="flow-line"
+      marker-end={`url(#${compact ? 'arrow-small' : 'arrow-large'})`}
+    />
+    <path
+      d="M409 214H474V274"
+      class="flow-line"
+      marker-end={`url(#${compact ? 'arrow-small' : 'arrow-large'})`}
+    />
+    <rect
+      x="30"
+      y="32"
+      width="192"
+      height="81"
+      rx="8"
+      fill="white"
+      stroke="#c4d1e1"
+    />
+    <path
+      d="m55 57 14-5 14 5-3 23-11 6-11-6Z"
+      fill="none"
+      stroke="#2457db"
+      stroke-width="1.7"
+    />
+    <path
+      d="m62 76 7-16 7 16m-11-5h8"
+      fill="none"
+      stroke="#2457db"
+      stroke-width="1.7"
+    />
+    <text x="98" y="67" class="diagram-title">
+      Angular
+    </text>
+    <text x="98" y="88" class="diagram-small">
+      Web interface
+    </text>
+    <rect x="194" y="137" width="215" height="112" rx="9" fill="#2457db" />
+    <rect
+      x="214"
+      y="157"
+      width="28"
+      height="24"
+      rx="4"
+      stroke="white"
+      fill="none"
+      stroke-width="1.6"
+    />
+    <path d="M220 165h16m-16 7h10" stroke="white" stroke-width="1.6" />
+    <text x="256" y="175" class="diagram-title inverse">
+      Spring Boot
+    </text>
+    <text x="215" y="204" class="diagram-small inverse">
+      REST API
+    </text>
+    <path d="M214 219h175" stroke="#8daaf3" />
+    <text x="215" y="238" class="diagram-code inverse">
+      Spring Security + JWT
+    </text>
+    <rect
+      x="378"
+      y="275"
+      width="192"
+      height="81"
+      rx="8"
+      fill="white"
+      stroke="#c4d1e1"
+    />
+    <ellipse
+      cx="410"
+      cy="299"
+      rx="12"
+      ry="5"
+      stroke="#2457db"
+      fill="none"
+      stroke-width="1.6"
+    />
+    <path
+      d="M398 299v23c0 7 24 7 24 0v-23m-24 12c0 7 24 7 24 0"
+      stroke="#2457db"
+      fill="none"
+      stroke-width="1.6"
+    />
+    <text x="438" y="309" class="diagram-title">
+      PostgreSQL
+    </text>
+    <text x="438" y="330" class="diagram-small">
+      Data storage
+    </text>
+    <text x="34" y="339" class="diagram-code">
+      share / borrow / return
+    </text>
+  </svg>
+  <div
+    class="mobile-flow"
+    role="img"
+    aria-label="Angular web interface connects to the Spring Boot REST API, secured with Spring Security and JWT, then PostgreSQL data storage."
+  >
+    <div class="mobile-flow-node">
+      <strong>Angular</strong>
+      <span>Web interface</span>
+    </div>
+    <span class="mobile-flow-arrow" aria-hidden="true">
+      ↓
+    </span>
+    <div class="mobile-flow-node mobile-flow-api">
+      <strong>Spring Boot</strong>
+      <span>REST API</span>
+      <small>Spring Security + JWT</small>
+    </div>
+    <span class="mobile-flow-arrow" aria-hidden="true">
+      ↓
+    </span>
+    <div class="mobile-flow-node">
+      <strong>PostgreSQL</strong>
+      <span>Data storage</span>
+    </div>
+  </div>
+  <div class="flow-footer">
+    <span class="flow-dot" aria-hidden="true"></span>
+    <span>From the BookVerse project</span>
+    <a href="/projects/bookverse/">
+      Project details <span aria-hidden="true">↗</span>
+    </a>
+  </div>
 </div>

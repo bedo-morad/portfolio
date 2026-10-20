@@ -7,11 +7,7 @@ export interface ProjectRepository {
 
 /** Identifiers supported by the architecture component, independent of route slugs. */
 export type ArchitectureDiagram =
-  | 'bookverse'
-  | 'easy-buy'
-  | 'swiftchat'
-  | 'masa2o-ta7ady'
-  | 'heimdall';
+  'bookverse' | 'easy-buy' | 'swiftchat' | 'masa2o-ta7ady' | 'heimdall';
 
 export interface ProjectScreenshot {
   readonly src: `/images/${string}`;
