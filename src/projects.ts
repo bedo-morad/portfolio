@@ -1,6 +1,9 @@
-export const projects = [
+import type { Project } from './types/project';
+
+export const projects: readonly Project[] = [
   {
     slug: 'bookverse',
+    diagram: 'bookverse',
     name: 'BookVerse',
     category: 'Book sharing',
     summary:
@@ -34,12 +37,11 @@ export const projects = [
         url: 'https://github.com/bedo-morad/BookVerse',
       },
     ],
-    screenshot: '',
-    screenshotAlt: '',
-    screenshotSource: '',
+    screenshot: null,
   },
   {
     slug: 'easy-buy',
+    diagram: 'easy-buy',
     name: 'Easy-Buy',
     category: 'E-commerce backend',
     summary: 'An e-commerce backend split into Spring Cloud microservices.',
@@ -80,12 +82,11 @@ export const projects = [
         url: 'https://github.com/bedo-morad/Easy-Buy',
       },
     ],
-    screenshot: '',
-    screenshotAlt: '',
-    screenshotSource: '',
+    screenshot: null,
   },
   {
     slug: 'swiftchat',
+    diagram: 'swiftchat',
     name: 'SwiftChat',
     category: 'Real-time messaging',
     summary: 'A real-time chat application designed for local development.',
@@ -125,14 +126,16 @@ export const projects = [
         url: 'https://github.com/bedo-morad/SwiftChat',
       },
     ],
-    screenshot: '/images/swiftchat-workspace.png',
-    screenshotAlt:
-      'SwiftChat workspace with a conversation list and welcome screen.',
-    screenshotSource:
-      'https://github.com/bedo-morad/SwiftChat/blob/master/docs/screenshots/workspace.png',
+    screenshot: {
+      src: '/images/swiftchat-workspace.png',
+      alt: 'SwiftChat workspace with a conversation list and welcome screen.',
+      source:
+        'https://github.com/bedo-morad/SwiftChat/blob/master/docs/screenshots/workspace.png',
+    },
   },
   {
     slug: 'masa2o-ta7ady',
+    diagram: 'masa2o-ta7ady',
     name: 'Masa2o-Ta7ady',
     category: 'Football game night',
     summary: 'A football game-night application run by a referee.',
@@ -170,14 +173,16 @@ export const projects = [
         url: 'https://github.com/bedo-morad/Masa2o-Ta7ady',
       },
     ],
-    screenshot: '/images/masa2o-main-menu.png',
-    screenshotAlt:
-      'Masa2o-Ta7ady main menu from the football game-night application.',
-    screenshotSource:
-      'https://github.com/bedo-morad/Masa2o-Ta7ady/blob/master/docs/screenshots/main-menu.png',
+    screenshot: {
+      src: '/images/masa2o-main-menu.png',
+      alt: 'Masa2o-Ta7ady main menu from the football game-night application.',
+      source:
+        'https://github.com/bedo-morad/Masa2o-Ta7ady/blob/master/docs/screenshots/main-menu.png',
+    },
   },
   {
     slug: 'heimdall',
+    diagram: 'heimdall',
     name: 'Heimdall',
     category: 'Smart door lock',
     summary:
@@ -222,8 +227,18 @@ export const projects = [
         url: 'https://github.com/bedo-morad/Heimdall-App',
       },
     ],
-    screenshot: '',
-    screenshotAlt: '',
-    screenshotSource: '',
+    screenshot: null,
   },
 ];
+
+// Duplicate routes would silently overwrite a project in the generated site.
+const slugs = new Set<string>();
+for (const project of projects) {
+  if (slugs.has(project.slug)) {
+    throw new Error(`Duplicate project slug: ${project.slug}`);
+  }
+  slugs.add(project.slug);
+  if (project.screenshot && !project.screenshot.alt.trim()) {
+    throw new Error(`Missing screenshot description: ${project.slug}`);
+  }
+}

@@ -1,13 +1,18 @@
 ---
 import BookFlow from './BookFlow.astro';
-const { slug } = Astro.props;
+import type { ArchitectureDiagram } from '../types/project';
+
+interface Props {
+  diagram: ArchitectureDiagram;
+}
+const { diagram } = Astro.props;
 ---
 
-{slug === 'bookverse' ? (
+{diagram === 'bookverse' ? (
   <BookFlow compact />
 ) : (
   <div class="architecture-panel">
-    {slug === 'easy-buy' && (
+    {diagram === 'easy-buy' && (
       <>
         <div class="arch-row">
           <div class="arch-node">
@@ -50,7 +55,7 @@ const { slug } = Astro.props;
         </p>
       </>
     )}
-    {slug === 'swiftchat' && (
+    {diagram === 'swiftchat' && (
       <>
         <div class="arch-node narrow-node">
           Angular<small>Chat interface</small>
@@ -75,7 +80,7 @@ const { slug } = Astro.props;
         <p class="diagram-caption">Designed for local development.</p>
       </>
     )}
-    {slug === 'masa2o-ta7ady' && (
+    {diagram === 'masa2o-ta7ady' && (
       <>
         <div class="arch-node narrow-node">
           Angular<small>Referee interface</small>
@@ -97,7 +102,7 @@ const { slug } = Astro.props;
         </p>
       </>
     )}
-    {slug === 'heimdall' && (
+    {diagram === 'heimdall' && (
       <>
         <div class="arch-boundary">
           <p class="boundary-label">Abdelrahman’s contribution</p>

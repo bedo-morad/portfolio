@@ -3,6 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import Architecture from '../../components/Architecture.astro';
 import { projects } from '../../projects';
 import '../../styles/details.css';
+import type { Project } from '../../types/project';
+
+interface Props {
+  project: Project;
+}
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -28,7 +33,7 @@ const { project } = Astro.props;
       <h1>{project.name}</h1>
       <p class="project-deck">{project.summary}</p>
       <ul class="tech-list" aria-label="Technologies used">
-        {project.tech.map((technology: string) => (
+        {project.tech.map((technology) => (
           <li>{technology}</li>
         ))}
       </ul>
@@ -59,13 +64,13 @@ const { project } = Astro.props;
         <h2 id="architecture-title">Architecture</h2>
         <p>{project.architecture}</p>
       </div>
-      <Architecture slug={project.slug} />
+      <Architecture diagram={project.diagram} />
     </section>
 
     <section class="features-section" aria-labelledby="features-title">
       <h2 id="features-title">What the project covers</h2>
       <div class="features-grid">
-        {project.features.map(([title, body]: string[]) => (
+        {project.features.map(([title, body]) => (
           <article>
             <h3>{title}</h3>
             <p>{body}</p>
@@ -80,7 +85,7 @@ const { project } = Astro.props;
           <h2 id="interface-title">Interface</h2>
           <a
             class="text-link"
-            href={project.screenshotSource}
+            href={project.screenshot.source}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -94,8 +99,8 @@ const { project } = Astro.props;
           ]}
         >
           <img
-            src={project.screenshot}
-            alt={project.screenshotAlt}
+            src={project.screenshot.src}
+            alt={project.screenshot.alt}
             loading="lazy"
             width={project.slug === 'masa2o-ta7ady' ? 572 : 1440}
             height={project.slug === 'masa2o-ta7ady' ? 835 : 900}
@@ -110,7 +115,7 @@ const { project } = Astro.props;
     <section class="repository-section" aria-labelledby="source-title">
       <h2 id="source-title">Source code</h2>
       <div class="repository-links">
-        {project.repos.map((repo: { label: string; url: string }) => (
+        {project.repos.map((repo) => (
           <a href={repo.url} target="_blank" rel="noopener noreferrer">
             <span>{repo.label}</span>
             <span aria-hidden="true">↗</span>
