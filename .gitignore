@@ -6,5 +6,6 @@ dist/
 !.env.example
 .DS_Store
 *.log
+.netlify/
 playwright-report/
 test-results/
