@@ -2,20 +2,125 @@
 import BookFlow from './BookFlow.astro';
 const { slug } = Astro.props;
 ---
-{slug === 'bookverse' ? <BookFlow compact /> : <div class="architecture-panel">
-  {slug === 'easy-buy' && <>
-    <div class="arch-row"><div class="arch-node">Keycloak<small>Authentication</small></div><span class="arch-connector" aria-hidden="true">↔</span><div class="arch-node accent-node">API Gateway<small>Request routing</small></div></div>
-    <div class="arch-down" aria-hidden="true">↓</div><div class="arch-node wide-node">Spring Boot microservices<small>Customer / Product / Order / Payment / Notification</small></div>
-    <div class="arch-down" aria-hidden="true">↓</div><div class="arch-row bottom-nodes"><div class="arch-node">PostgreSQL<small>Relational data</small></div><div class="arch-node">MongoDB<small>Document data</small></div><div class="arch-node">Kafka<small>Event messaging</small></div></div>
-    <p class="arch-support">Supporting infrastructure: Spring Cloud Config + Eureka Discovery</p><p class="diagram-caption">Component overview. The payment service does not establish real payment processing.</p>
-  </>}
-  {slug === 'swiftchat' && <>
-    <div class="arch-node narrow-node">Angular<small>Chat interface</small></div><div class="arch-down protocol">STOMP over WebSockets <span aria-hidden="true">↕</span></div><div class="arch-node narrow-node accent-node">Spring Boot<small>Chat backend</small></div><div class="arch-down" aria-hidden="true">↓</div><div class="arch-row bottom-nodes"><div class="arch-node">PostgreSQL<small>Application data</small></div><div class="arch-node">Keycloak<small>Authentication</small></div></div><p class="diagram-caption">Designed for local development.</p>
-  </>}
-  {slug === 'masa2o-ta7ady' && <>
-    <div class="arch-node narrow-node">Angular<small>Referee interface</small></div><div class="arch-down" aria-hidden="true">↓</div><div class="arch-node narrow-node accent-node">Spring Boot / Java 17<small>Game and question management</small></div><div class="arch-down protocol">JPA <span aria-hidden="true">↓</span></div><div class="arch-node narrow-node">PostgreSQL<small>Database migrations with Flyway</small></div><p class="arch-support">Docker configuration included in the repository</p>
-  </>}
-  {slug === 'heimdall' && <>
-    <div class="arch-boundary"><p class="boundary-label">Abdelrahman’s contribution</p><div class="arch-node accent-node narrow-node">Raspberry Pi<small>Python device software</small></div><div class="arch-down" aria-hidden="true">↕</div><div class="arch-row bottom-nodes"><div class="arch-node">Keypad</div><div class="arch-node">Sensors</div><div class="arch-node">Camera</div></div><p class="arch-support">Firebase integration in the device software</p></div><p class="diagram-caption">Hardware and software overview. The team’s Flutter app is outside this contribution.</p>
-  </>}
-</div>}
+
+{slug === 'bookverse' ? (
+  <BookFlow compact />
+) : (
+  <div class="architecture-panel">
+    {slug === 'easy-buy' && (
+      <>
+        <div class="arch-row">
+          <div class="arch-node">
+            Keycloak<small>Authentication</small>
+          </div>
+          <span class="arch-connector" aria-hidden="true">
+            ↔
+          </span>
+          <div class="arch-node accent-node">
+            API Gateway<small>Request routing</small>
+          </div>
+        </div>
+        <div class="arch-down" aria-hidden="true">
+          ↓
+        </div>
+        <div class="arch-node wide-node">
+          Spring Boot microservices
+          <small>Customer / Product / Order / Payment / Notification</small>
+        </div>
+        <div class="arch-down" aria-hidden="true">
+          ↓
+        </div>
+        <div class="arch-row bottom-nodes">
+          <div class="arch-node">
+            PostgreSQL<small>Relational data</small>
+          </div>
+          <div class="arch-node">
+            MongoDB<small>Document data</small>
+          </div>
+          <div class="arch-node">
+            Kafka<small>Event messaging</small>
+          </div>
+        </div>
+        <p class="arch-support">
+          Supporting infrastructure: Spring Cloud Config + Eureka Discovery
+        </p>
+        <p class="diagram-caption">
+          Component overview. The payment service does not establish real
+          payment processing.
+        </p>
+      </>
+    )}
+    {slug === 'swiftchat' && (
+      <>
+        <div class="arch-node narrow-node">
+          Angular<small>Chat interface</small>
+        </div>
+        <div class="arch-down protocol">
+          STOMP over WebSockets <span aria-hidden="true">↕</span>
+        </div>
+        <div class="arch-node narrow-node accent-node">
+          Spring Boot<small>Chat backend</small>
+        </div>
+        <div class="arch-down" aria-hidden="true">
+          ↓
+        </div>
+        <div class="arch-row bottom-nodes">
+          <div class="arch-node">
+            PostgreSQL<small>Application data</small>
+          </div>
+          <div class="arch-node">
+            Keycloak<small>Authentication</small>
+          </div>
+        </div>
+        <p class="diagram-caption">Designed for local development.</p>
+      </>
+    )}
+    {slug === 'masa2o-ta7ady' && (
+      <>
+        <div class="arch-node narrow-node">
+          Angular<small>Referee interface</small>
+        </div>
+        <div class="arch-down" aria-hidden="true">
+          ↓
+        </div>
+        <div class="arch-node narrow-node accent-node">
+          Spring Boot / Java 17<small>Game and question management</small>
+        </div>
+        <div class="arch-down protocol">
+          JPA <span aria-hidden="true">↓</span>
+        </div>
+        <div class="arch-node narrow-node">
+          PostgreSQL<small>Database migrations with Flyway</small>
+        </div>
+        <p class="arch-support">
+          Docker configuration included in the repository
+        </p>
+      </>
+    )}
+    {slug === 'heimdall' && (
+      <>
+        <div class="arch-boundary">
+          <p class="boundary-label">Abdelrahman’s contribution</p>
+          <div class="arch-node accent-node narrow-node">
+            Raspberry Pi<small>Python device software</small>
+          </div>
+          <div class="arch-down" aria-hidden="true">
+            ↕
+          </div>
+          <div class="arch-row bottom-nodes">
+            <div class="arch-node">Keypad</div>
+            <div class="arch-node">Sensors</div>
+            <div class="arch-node">Camera</div>
+          </div>
+          <p class="arch-support">
+            Firebase integration in the device software
+          </p>
+        </div>
+        <p class="diagram-caption">
+          Hardware and software overview. The team’s Flutter app is outside this
+          contribution.
+        </p>
+      </>
+    )}
+  </div>
+)}
