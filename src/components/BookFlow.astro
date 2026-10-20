@@ -1,4 +1,8 @@
 ---
+interface Props {
+  compact?: boolean;
+}
+
 const { compact = false } = Astro.props;
 ---
 <div class:list={['book-flow', { compact }]}>

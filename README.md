@@ -66,6 +66,7 @@ npm run preview
 
 - `src/pages/index.astro`: homepage content and sections.
 - `src/projects.ts`: project descriptions, technologies, and repository links.
+- `src/types/project.ts`: shared project, feature, repository, screenshot, and architecture diagram contracts. Catalogue loading rejects duplicate route slugs and missing screenshot descriptions during the build.
 - `src/pages/projects/[slug].astro`: shared project detail page template.
 - `src/layouts/Layout.astro`: shared layout, navigation, and theme behavior.
 - `src/styles/`: site and project page styles.

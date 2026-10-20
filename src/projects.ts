@@ -1,6 +1,8 @@
-export const projects = [
+import type { Project } from './types/project';
+
+export const projects: readonly Project[] = [
   {
-    slug: 'bookverse', name: 'BookVerse', category: 'Book sharing',
+    slug: 'bookverse', diagram: 'bookverse', name: 'BookVerse', category: 'Book sharing',
     summary: 'A book-sharing prototype with borrowing, returns, reader feedback, and email account activation.',
     tech: ['Spring Boot', 'Angular', 'PostgreSQL', 'Spring Security', 'JWT'],
     role: 'Solo project', scope: 'Backend and Angular interface', status: 'Prototype. No public demo.',
@@ -13,10 +15,10 @@ export const projects = [
     ],
     architecture: 'The Angular web interface calls a Spring Boot REST API. Spring Security validates custom JWTs, and Spring Data JPA connects the API to PostgreSQL.',
     repos: [{ label: 'BookVerse repository', url: 'https://github.com/bedo-morad/BookVerse' }],
-    screenshot: '', screenshotAlt: '', screenshotSource: ''
+    screenshot: null
   },
   {
-    slug: 'easy-buy', name: 'Easy-Buy', category: 'E-commerce backend',
+    slug: 'easy-buy', diagram: 'easy-buy', name: 'Easy-Buy', category: 'E-commerce backend',
     summary: 'An e-commerce backend split into Spring Cloud microservices.',
     tech: ['Java', 'Spring Boot', 'Spring Cloud', 'Kafka', 'Keycloak', 'PostgreSQL', 'MongoDB'],
     role: 'Solo project', scope: 'Backend microservices', status: 'Backend project. No public demo.',
@@ -29,10 +31,10 @@ export const projects = [
     ],
     architecture: 'The backend combines a gateway, Spring Boot services, and Spring Cloud infrastructure. Kafka provides event messaging; Keycloak handles authentication. PostgreSQL and MongoDB serve the persistence layer.',
     repos: [{ label: 'Easy-Buy repository', url: 'https://github.com/bedo-morad/Easy-Buy' }],
-    screenshot: '', screenshotAlt: '', screenshotSource: ''
+    screenshot: null
   },
   {
-    slug: 'swiftchat', name: 'SwiftChat', category: 'Real-time messaging',
+    slug: 'swiftchat', diagram: 'swiftchat', name: 'SwiftChat', category: 'Real-time messaging',
     summary: 'A real-time chat application designed for local development.',
     tech: ['Spring Boot', 'Angular', 'PostgreSQL', 'Keycloak', 'STOMP', 'WebSockets'],
     role: 'Solo project', scope: 'Backend and Angular interface', status: 'Designed for local development. No public demo.',
@@ -45,10 +47,10 @@ export const projects = [
     ],
     architecture: 'The Angular client connects to the Spring Boot backend using STOMP over WebSockets for real-time messaging. Keycloak handles authentication and PostgreSQL stores application data.',
     repos: [{ label: 'SwiftChat repository', url: 'https://github.com/bedo-morad/SwiftChat' }],
-    screenshot: '/images/swiftchat-workspace.png', screenshotAlt: 'SwiftChat workspace with a conversation list and welcome screen.', screenshotSource: 'https://github.com/bedo-morad/SwiftChat/blob/master/docs/screenshots/workspace.png'
+    screenshot: { src: '/images/swiftchat-workspace.png', alt: 'SwiftChat workspace with a conversation list and welcome screen.', source: 'https://github.com/bedo-morad/SwiftChat/blob/master/docs/screenshots/workspace.png' }
   },
   {
-    slug: 'masa2o-ta7ady', name: 'Masa2o-Ta7ady', category: 'Football game night',
+    slug: 'masa2o-ta7ady', diagram: 'masa2o-ta7ady', name: 'Masa2o-Ta7ady', category: 'Football game night',
     summary: 'A football game-night application run by a referee.',
     tech: ['Java 17', 'Spring Boot', 'Angular', 'PostgreSQL', 'JPA', 'Flyway', 'Docker'],
     role: 'Solo project', scope: 'Backend, Angular interface, and question imports', status: 'No public demo or verified live deployment.',
@@ -61,10 +63,10 @@ export const projects = [
     ],
     architecture: 'The Angular interface connects to the Spring Boot backend. JPA provides access to PostgreSQL, with Flyway managing database migrations. Docker configuration is included for the project environment.',
     repos: [{ label: 'Masa2o-Ta7ady repository', url: 'https://github.com/bedo-morad/Masa2o-Ta7ady' }],
-    screenshot: '/images/masa2o-main-menu.png', screenshotAlt: 'Masa2o-Ta7ady main menu from the football game-night application.', screenshotSource: 'https://github.com/bedo-morad/Masa2o-Ta7ady/blob/master/docs/screenshots/main-menu.png'
+    screenshot: { src: '/images/masa2o-main-menu.png', alt: 'Masa2o-Ta7ady main menu from the football game-night application.', source: 'https://github.com/bedo-morad/Masa2o-Ta7ady/blob/master/docs/screenshots/main-menu.png' }
   },
   {
-    slug: 'heimdall', name: 'Heimdall', category: 'Smart door lock',
+    slug: 'heimdall', diagram: 'heimdall', name: 'Heimdall', category: 'Smart door lock',
     summary: 'A team-built smart door-lock graduation project, with a focus on the Raspberry Pi side.',
     tech: ['Python', 'Raspberry Pi', 'Keypad', 'Sensors', 'Camera', 'Firebase'],
     role: 'Team graduation project', scope: 'Raspberry Pi side only', status: 'Related repositories grouped below. No public demo.',
@@ -81,6 +83,18 @@ export const projects = [
       { label: 'Heimdall-Raspberry-Pi', url: 'https://github.com/bedo-morad/Heimdall-Raspberry-Pi' },
       { label: 'Heimdall-App (team context)', url: 'https://github.com/bedo-morad/Heimdall-App' }
     ],
-    screenshot: '', screenshotAlt: '', screenshotSource: ''
+    screenshot: null
   }
 ];
+
+// Duplicate routes would silently overwrite a project in the generated site.
+const slugs = new Set<string>();
+for (const project of projects) {
+  if (slugs.has(project.slug)) {
+    throw new Error(`Duplicate project slug: ${project.slug}`);
+  }
+  slugs.add(project.slug);
+  if (project.screenshot && !project.screenshot.alt.trim()) {
+    throw new Error(`Missing screenshot description: ${project.slug}`);
+  }
+}
