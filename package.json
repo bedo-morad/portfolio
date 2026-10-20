@@ -11,7 +11,9 @@
     "dev": "astro dev",
     "check": "astro check",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "^5.2.0",
@@ -21,6 +23,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.11",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
     "typescript": "^5.9.3"
   }
 }
