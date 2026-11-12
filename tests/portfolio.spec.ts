@@ -27,7 +27,7 @@ for (const [slug, name] of projectRoutes) {
     const response = await page.goto(`/projects/${slug}/`);
     expect(response?.status()).toBe(200);
     await expect(page.getByRole('heading', { name, exact: true, level: 1 })).toBeVisible();
-    for (const heading of ['Overview', 'Architecture', 'What the project covers', 'Source code']) {
+    for (const heading of ['Overview', 'Architecture', 'What it does', 'Source code']) {
       await expect(page.getByRole('heading', { name: heading, exact: true })).toBeVisible();
     }
     await expect(page.getByRole('link', { name: 'All projects' })).toHaveAttribute('href', '/#projects');

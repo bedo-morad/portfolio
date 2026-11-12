@@ -62,6 +62,21 @@
 .project-header .tech-list {
   margin-top: 27px;
 }
+.project-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 10px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.project-demo:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
 .detail-wrap .tech-list li {
   border: 1px solid var(--line);
   border-radius: 999px;

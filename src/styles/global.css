@@ -536,11 +536,6 @@ html[data-theme='dark'] .identity-bracket {
   margin-top: 12px;
   font-size: 14px;
 }
-.service-note {
-  font-size: 12px;
-  margin-top: 20px;
-  padding-left: 4px;
-}
 .gallery-controls {
   display: flex;
   gap: 9px;
@@ -604,6 +599,16 @@ html[data-theme='dark'] .identity-bracket {
 .project-category {
   font-size: 10px;
   line-height: 1.5;
+}
+.project-demo-badge {
+  align-self: flex-start;
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  color: var(--accent);
+  font-size: 9px;
+  line-height: 1.5;
+  margin-top: 6px;
+  padding: 2px 7px;
 }
 .project-card-copy h3 {
   font-size: 25px;
@@ -974,9 +979,6 @@ html[data-theme='dark'] .contact-panel {
   .organization {
     font-size: 12px;
     margin-top: 7px;
-  }
-  .service-note {
-    font-size: 11px;
   }
   .project-card-copy {
     padding-inline: 7px;
