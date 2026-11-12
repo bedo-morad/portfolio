@@ -18,8 +18,9 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
           Developer<span class="type-cursor" aria-hidden="true"></span>
         </p>
         <p class="hero-description">
-          Java and Spring Boot backend applications, with Angular web interfaces
-          and Flutter mobile apps.
+          I build Java and Spring Boot backends, mostly REST APIs and
+          microservices, with Angular on the front end. I'm looking for a junior
+          backend role.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#projects">
@@ -81,7 +82,7 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
         </div>
         <span class="identity-tag tag-top">Java</span>
         <span class="identity-tag tag-bottom">Spring Boot</span>
-        <span class="identity-caption">Backend, with the full picture.</span>
+        <span class="identity-caption">Backend, plus web and mobile.</span>
       </div>
     </section>
 
@@ -93,20 +94,19 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
       <h2 id="about-title">About</h2>
       <div class="about-copy about-description">
         <p>
-          Java backend development with Spring Boot and REST APIs. Projects
-          range from a book-lending prototype and e-commerce microservices to
-          real-time chat and a football game-night application.
+          I'm a backend developer. I studied Computer Science and Artificial
+          Intelligence at MTI University and graduated in 2024.
         </p>
         <p>
-          Backend work covers authentication with Spring Security and JWT or
-          Keycloak, data storage with PostgreSQL, and Kafka messaging between
-          services. Several projects also include Angular web interfaces.
+          In practice that means Java, Spring Boot, Spring Security, and Spring
+          Data JPA. I've stored data in PostgreSQL, MongoDB, MySQL, and SQL
+          Server, passed messages between services with Kafka, and handled auth
+          with Keycloak or JWT. Docker Compose gets a project running on a
+          machine that isn't mine, and Angular or Flutter covers the interface.
         </p>
         <p>
-          Spring REST API work alongside senior developers during a backend
-          internship at Connect Digital Solutions. Freelance Flutter development
-          at Dropiedea Dijital VE Elektronik included EmirateSWP for Android and
-          iOS.
+          I served in the military from April 2025 to June 2026, which is the
+          gap on the CV. I'm out now.
         </p>
         <a class="text-link" href="/Abdelrahman-Mosad-CV.pdf" download>
           Download the full CV <span aria-hidden="true">↗</span>
@@ -122,7 +122,7 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
       <div class="section-heading">
         <div>
           <h2 id="experience-title">Experience</h2>
-          <p>Development work.</p>
+          <p>Internship and freelance work.</p>
         </div>
         <a class="small-link" href="/Abdelrahman-Mosad-CV.pdf" download>
           Full CV <span aria-hidden="true">↗</span>
@@ -140,7 +140,7 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
             </div>
             <p class="organization">Dropiedea Dijital VE Elektronik</p>
             <p>
-              EmirateSWP, built from scratch in Flutter for Android and iOS.
+              I built EmirateSWP from scratch in Flutter for Android and iOS.
             </p>
           </div>
         </article>
@@ -154,11 +154,14 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
               <p class="experience-date">Aug 2023 to Oct 2023</p>
             </div>
             <p class="organization">Connect Digital Solutions</p>
-            <p>Worked with senior developers on Spring REST APIs.</p>
+            <p>
+              I built REST endpoints in Java and Spring Boot with Spring MVC and
+              JPA, and worked alongside the senior developers on debugging and
+              testing.
+            </p>
           </div>
         </article>
       </div>
-      <p class="service-note">Military service: April 2025 to June 2026.</p>
     </section>
 
     <section
@@ -180,8 +183,8 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
           </div>
           <div class="experience-body">
             <div class="experience-heading">
-              <h3>Computer Science</h3>
-              <p class="experience-date">2020–2024</p>
+              <h3>Computer Science and Artificial Intelligence</h3>
+              <p class="experience-date">2020 to 2024</p>
             </div>
             <p class="organization">MTI University</p>
           </div>
@@ -197,7 +200,7 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
       <div class="section-heading">
         <div>
           <h2 id="projects-title">Projects</h2>
-          <p>Backend systems and the interfaces around them.</p>
+          <p>Backend systems and the interfaces that use them.</p>
         </div>
         <div class="gallery-controls">
           <button
@@ -234,6 +237,9 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
               >
                 <div class="project-card-copy">
                   <p class="project-category">{project.category}</p>
+                  {project.demo && (
+                    <span class="project-demo-badge">Live demo</span>
+                  )}
                   <h3>{project.name}</h3>
                   <p class="project-summary">{project.summary}</p>
                   <ul
@@ -262,7 +268,11 @@ import whatsAppIcon from '../assets/brands/whatsapp.svg?raw';
     >
       <div class="contact-heading">
         <h2 id="contact-title">Get in touch.</h2>
-        <p>For backend roles and project enquiries.</p>
+        <p>
+          If you're hiring for a junior backend role, or you want to ask about
+          one of the projects, you can contact me through email, LinkedIn, or
+          WhatsApp.
+        </p>
       </div>
       <div class="contact-panel">
         <div class="contact-email">

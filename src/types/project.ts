@@ -29,5 +29,7 @@ export interface Project {
   readonly architecture: string;
   readonly diagram: ArchitectureDiagram;
   readonly repos: readonly ProjectRepository[];
+  /** Optional public demo, kept separate from the source repositories. */
+  readonly demo?: ProjectRepository;
   readonly screenshot: ProjectScreenshot | null;
 }

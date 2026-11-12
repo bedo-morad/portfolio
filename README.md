@@ -5,11 +5,11 @@ An English-language portfolio focused on Java and Spring Boot backend projects, 
 ## What's in the site
 
 - A homepage with About, experience, education, projects, and contact sections.
-- Five project detail pages with summaries, technology lists, architecture diagrams, and source repository links.
+- Five project detail pages with summaries, technology lists, architecture diagrams, source repository links, and a live demo link for Masa2o-Ta7ady.
 - A dark theme by default, a light theme switch, and a downloadable CV.
 - Contact links, including [GitHub](https://github.com/bedo-morad) and [LinkedIn](https://www.linkedin.com/in/abdelrahman-mosad).
 
-The listed projects do not have public live demos.
+Masa2o-Ta7ady is live at [ta7ady.abdalrahman.tech](https://ta7ady.abdalrahman.tech). The other listed projects do not have public live demos.
 
 ## Projects
 
@@ -18,7 +18,7 @@ The listed projects do not have public live demos.
 | [BookVerse](https://github.com/bedo-morad/BookVerse) | A book-sharing prototype with borrowing, returns, reader feedback, and email account activation. Spring Boot backend and Angular interface. |
 | [Easy-Buy](https://github.com/bedo-morad/Easy-Buy) | An e-commerce backend using Spring Cloud microservices, Kafka messaging, and Keycloak authentication. |
 | [SwiftChat](https://github.com/bedo-morad/SwiftChat) | A chat application for local development, with Spring Boot, Angular, and STOMP over WebSockets. |
-| [Masa2o-Ta7ady](https://github.com/bedo-morad/Masa2o-Ta7ady) | A referee-led football game-night application with a Spring Boot backend, Angular interface, and question imports. |
+| [Masa2o-Ta7ady](https://github.com/bedo-morad/Masa2o-Ta7ady) | A referee-led football game-night application with a Spring Boot backend, Angular interface, and question imports. Live at [ta7ady.abdalrahman.tech](https://ta7ady.abdalrahman.tech). |
 | [Heimdall](https://github.com/bedo-morad/Heimdall-RaspberryPi) | A team smart door-lock graduation project. The portfolio contribution covers the Raspberry Pi side using Python, connected hardware, and Firebase. |
 
 ## Site stack

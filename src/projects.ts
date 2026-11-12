@@ -7,7 +7,7 @@ export const projects: readonly Project[] = [
     name: 'BookVerse',
     category: 'Book sharing',
     summary:
-      'A book-sharing prototype with borrowing, returns, reader feedback, and email account activation.',
+      "A social library. Members share their shelves, borrow each other's books, and return them once the owner approves.",
     tech: ['Spring Boot', 'Angular', 'PostgreSQL', 'Spring Security', 'JWT'],
     role: 'Solo project',
     scope: 'Backend and Angular interface',
@@ -44,7 +44,8 @@ export const projects: readonly Project[] = [
     diagram: 'easy-buy',
     name: 'Easy-Buy',
     category: 'E-commerce backend',
-    summary: 'An e-commerce backend split into Spring Cloud microservices.',
+    summary:
+      'An e-commerce backend split into microservices, with Kafka passing events between them and Keycloak handling login.',
     tech: [
       'Java',
       'Spring Boot',
@@ -89,7 +90,8 @@ export const projects: readonly Project[] = [
     diagram: 'swiftchat',
     name: 'SwiftChat',
     category: 'Real-time messaging',
-    summary: 'A real-time chat application designed for local development.',
+    summary:
+      'One-to-one chat with real-time messages, image attachments, and emoji over WebSockets.',
     tech: [
       'Spring Boot',
       'Angular',
@@ -138,7 +140,8 @@ export const projects: readonly Project[] = [
     diagram: 'masa2o-ta7ady',
     name: 'Masa2o-Ta7ady',
     category: 'Football game night',
-    summary: 'A football game-night application run by a referee.',
+    summary:
+      'An Arabic football game night: get your friends together, split into two teams, and find out who actually remembers all that football trivia.',
     tech: [
       'Java 17',
       'Spring Boot',
@@ -150,7 +153,7 @@ export const projects: readonly Project[] = [
     ],
     role: 'Solo project',
     scope: 'Backend, Angular interface, and question imports',
-    status: 'No public demo or verified live deployment.',
+    status: 'Live at ta7ady.abdalrahman.tech.',
     intro:
       'A referee-led football game-night application with game and question management. The project covers the Spring Boot backend, Angular interface, and question imports.',
     features: [
@@ -173,6 +176,10 @@ export const projects: readonly Project[] = [
         url: 'https://github.com/bedo-morad/Masa2o-Ta7ady',
       },
     ],
+    demo: {
+      label: 'Play Masa2o-Ta7ady',
+      url: 'https://ta7ady.abdalrahman.tech',
+    },
     screenshot: {
       src: '/images/masa2o-main-menu.png',
       alt: 'Masa2o-Ta7ady main menu from the football game-night application.',
@@ -186,13 +193,13 @@ export const projects: readonly Project[] = [
     name: 'Heimdall',
     category: 'Smart door lock',
     summary:
-      'A team-built smart door-lock graduation project, with a focus on the Raspberry Pi side.',
+      'A smart door lock built by our graduation team. My part was the Python running on the Raspberry Pi.',
     tech: ['Python', 'Raspberry Pi', 'Keypad', 'Sensors', 'Camera', 'Firebase'],
     role: 'Team graduation project',
     scope: 'Raspberry Pi side only',
-    status: 'Related repositories grouped below. No public demo.',
+    status: 'Team project. My part was the Raspberry Pi side.',
     intro:
-      'A smart door-lock graduation project developed by a team. The Raspberry Pi contribution uses Python with a keypad, sensors, a camera, and Firebase. The companion Flutter app belongs to the wider team project and falls outside this contribution.',
+      'A smart door lock, built by a team for our graduation project. My part was the Raspberry Pi software in Python, talking to a keypad, sensors, a camera, and Firebase. The Flutter app belongs to the wider team project.',
     features: [
       [
         'Raspberry Pi software',

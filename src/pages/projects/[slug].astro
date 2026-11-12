@@ -37,6 +37,16 @@ const { project } = Astro.props;
           <li>{technology}</li>
         ))}
       </ul>
+      {project.demo && (
+        <a
+          class="project-demo"
+          href={project.demo.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {project.demo.label} <span aria-hidden="true">↗</span>
+        </a>
+      )}
     </header>
 
     <dl class="project-meta">
