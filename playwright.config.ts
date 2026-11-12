@@ -17,8 +17,8 @@ export default defineConfig({
     { name: 'mobile-chromium', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: 'npm run preview -- --host 127.0.0.1 --port 4391',
+    command: 'node scripts/preview.mjs',
     url: 'http://127.0.0.1:4391',
-    reuseExistingServer: false,
+    reuseExistingServer: !process.env.CI,
   },
 });
